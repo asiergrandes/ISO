@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn instance to serve formulariocitas
+After=network.target
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/formulariocitas
+Environment="PATH=/var/www/formulariocitas/venv/bin"
+ExecStart=/var/www/formulariocitas/venv/bin/gunicorn --bind 127.0.0.1:5000 wsgi:app
+[Install]
+WantedBy=multi-user.target
